@@ -6,313 +6,129 @@
     <title>Game Settings Hub</title>
     <style>
         /* =========================================
-           TWITCH STYLE CSS
+           TWITCH STYLE CSS (Unverändert)
            ========================================= */
         :root {
             --bg-color: #0e0e10;
             --card-bg: #18181b;
             --card-hover: #1f1f23;
-            --primary: #9146FF; /* Twitch Lila */
+            --primary: #9146FF;
             --primary-hover: #a970ff;
             --text-main: #ffffff;
             --text-muted: #adadb8;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; padding: 20px; box-sizing: border-box; }
+        h1 { text-align: center; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 1.8rem; }
+        
+        #grid-view { display: flex; flex-direction: column; gap: 20px; max-width: 650px; margin: 0 auto; }
+        .game-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent; cursor: pointer; width: 100%; }
+        .game-card:hover { border-color: var(--primary); background-color: var(--card-hover); }
+        .game-banner { width: 100%; height: 180px; background-size: cover; background-position: center; border-bottom: 3px solid var(--primary); }
+        .game-title { padding: 15px 20px; font-size: 1.3rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        
+        .toggle-icon { font-size: 0.9rem; color: var(--primary); transition: transform 0.3s ease; }
+        .game-card.expanded .toggle-icon { transform: rotate(180deg); }
 
-        h1 {
-            text-align: center;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-        }
+        .game-content-wrapper { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease-out; background-color: var(--card-bg); }
+        .game-card.expanded .game-content-wrapper { grid-template-rows: 1fr; }
+        .game-content-inner { overflow: hidden; }
+        .game-content-padding { padding: 0 20px 20px 20px; color: var(--text-muted); font-size: 0.95rem; }
 
-        /* Grid für die Landing Page */
-        #grid-view {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        #standalone-view { display: none; max-width: 650px; margin: 0 auto; }
+        .home-btn { background-color: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 20px; display: inline-flex; align-items: center; text-decoration: none; transition: background-color 0.2s; width: 100%; justify-content: center; }
+        .home-btn:hover { background-color: var(--primary-hover); }
+        .standalone-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; border-top: 5px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .standalone-banner { width: 100%; height: 200px; background-size: cover; background-position: center; }
+        .standalone-content { padding: 20px; color: var(--text-muted); }
 
-        /* Spiel-Kachel */
-        .game-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid transparent;
-            cursor: pointer;
-        }
-
-        .game-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.5);
-            border-color: var(--primary);
-            background-color: var(--card-hover);
-        }
-
-        /* Banner Bild (Automatisch von Steam) */
-        .game-banner {
-            width: 100%;
-            height: 150px;
-            background-size: cover;
-            background-position: center;
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .game-title {
-            padding: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Ausklappbarer Inhalt (Standardmäßig versteckt) */
-        .game-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease;
-            background-color: var(--card-bg);
-            color: var(--text-muted);
-            padding: 0 15px;
-            font-size: 0.95rem;
-        }
-
-        .game-card.expanded .game-content {
-            max-height: 1000px; /* Groß genug für den Inhalt */
-            padding: 0 15px 15px 15px;
-        }
-
-        /* Standalone View (Einzelansicht über Link) */
-        #standalone-view {
-            display: none;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .home-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            transition: background-color 0.2s;
-        }
-
-        .home-btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .standalone-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            border-top: 5px solid var(--primary);
-        }
-
-        .standalone-content {
-            padding: 20px;
-            color: var(--text-muted);
-        }
-
-        .standalone-banner {
-            width: 100%;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Einstellungen & Links Design */
-        a {
-            color: var(--primary-hover);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        img {
-            max-width: 100%;
-            border-radius: 4px;
-        }
+        a { color: var(--primary-hover); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; border-radius: 6px; margin-top: 10px; }
+        ul { padding-left: 20px; }
+        h3 { color: var(--text-main); margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-    <!-- Titel wird nur auf der Startseite angezeigt -->
     <h1 id="main-title">My Game Settings</h1>
-
-    <!-- Startseite: Übersicht aller Spiele -->
     <div id="grid-view"></div>
-
-    <!-- Einzelansicht: Wenn jemand z.B. /#blackops2 aufruft -->
     <div id="standalone-view">
-        <button class="home-btn" onclick="goHome()">← Zurück zur Übersicht</button>
-        <div class="standalone-card" id="standalone-card-container">
-            <!-- Wird per JavaScript befüllt -->
-        </div>
+        <button class="home-btn" onclick="goHome()">← Zurück zur Spielauswahl</button>
+        <div class="standalone-card" id="standalone-card-container"></div>
     </div>
 
+    <!-- HIER LADEN WIR DEINE DATENBANK-DATEI -->
+    <script src="games.js"></script>
+
     <script>
-        /* =========================================
-           DATENBANK DER SPIELE
-           Hier fügst du neue Spiele und Inhalte hinzu!
-           ========================================= */
-        const games = [
-            {
-                id: "blackops2",
-                title: "Call of Duty: Black Ops II",
-                steamAppId: "202970", // WICHTIG: Die Steam ID für das Hintergrundbild
-                content: `
-                    <h3>Maus & Tastatur</h3>
-                    <ul>
-                        <li>DPI: 800</li>
-                        <li>In-Game Sens: 1.5</li>
-                        <li>FOV: 90</li>
-                    </ul>
-                    <h3>Video Settings</h3>
-                    <p>Alles auf Low für maximale FPS. Schatten deaktiviert.</p>
-                    <a href="https://example.com/config-download" target="_blank">🔗 Config herunterladen</a>
-                `
-            },
-            {
-                id: "cs2",
-                title: "Counter-Strike 2",
-                steamAppId: "730",
-                content: `
-                    <h3>Crosshair</h3>
-                    <p><code>CSGO-xyz123-abc456</code></p>
-                    <h3>Video</h3>
-                    <p>Auflösung: 1280x960 (Stretched)</p>
-                    <img src="https://via.placeholder.com/400x200?text=Beispiel+Screenshot" alt="Screenshot" style="margin-top: 10px;">
-                `
-            },
-            {
-                id: "apex",
-                title: "Apex Legends",
-                steamAppId: "1172470",
-                content: `
-                    <h3>Controller Settings (ALC)</h3>
-                    <ul>
-                        <li>Deadzone: 0%</li>
-                        <li>Outer Threshold: 1%</li>
-                        <li>Response Curve: 0</li>
-                    </ul>
-                `
-            }
-        ];
-
-        /* =========================================
-           LOGIK DER WEBSEITE
-           ========================================= */
-
         const gridView = document.getElementById('grid-view');
         const standaloneView = document.getElementById('standalone-view');
         const standaloneCard = document.getElementById('standalone-card-container');
         const mainTitle = document.getElementById('main-title');
 
-        // Funktion: Generiert die Steam-Bild-URL anhand der App ID
         function getSteamImage(appId) {
             return `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`;
         }
 
-        // Rendert die Startseite (Grid)
         function renderGrid() {
-            gridView.innerHTML = ''; // Grid leeren
-            
+            gridView.innerHTML = ''; 
             games.forEach(game => {
                 const card = document.createElement('div');
                 card.className = 'game-card';
-                
-                // HTML für eine Kachel in der Übersicht
                 card.innerHTML = `
                     <div class="game-banner" style="background-image: url('${getSteamImage(game.steamAppId)}')"></div>
                     <div class="game-title">
                         ${game.title}
-                        <span style="font-size: 0.8rem; color: var(--primary);">▼</span>
+                        <span class="toggle-icon">▼</span>
                     </div>
-                    <div class="game-content">
-                        ${game.content}
-                        <div style="margin-top: 15px; text-align: right;">
-                            <a href="#${game.id}" onclick="event.stopPropagation()">🔗 Direkter Link hierzu</a>
+                    <div class="game-content-wrapper">
+                        <div class="game-content-inner">
+                            <div class="game-content-padding">
+                                ${game.content}
+                                <div style="margin-top: 20px; text-align: right; border-top: 1px solid #333; padding-top: 15px;">
+                                    <a href="#${game.id}" onclick="event.stopPropagation()">↗ Im Vollbild öffnen</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
-
-                // Beim Klicken klappt die Karte auf/zu
-                card.addEventListener('click', () => {
-                    card.classList.toggle('expanded');
-                });
-
+                card.addEventListener('click', () => card.classList.toggle('expanded'));
                 gridView.appendChild(card);
             });
         }
 
-        // Rendert die Einzelansicht
         function renderStandalone(gameId) {
             const game = games.find(g => g.id === gameId);
-            if (!game) {
-                goHome(); // Wenn ID nicht existiert, zurück zur Startseite
-                return;
-            }
-
+            if (!game) { goHome(); return; }
             standaloneCard.innerHTML = `
                 <div class="standalone-banner" style="background-image: url('${getSteamImage(game.steamAppId)}')"></div>
                 <div class="standalone-content">
-                    <h2 style="color: var(--text-main); margin-top: 0;">${game.title}</h2>
+                    <h2 style="color: var(--text-main); margin-top: 0; font-size: 1.5rem;">${game.title}</h2>
                     ${game.content}
                 </div>
             `;
         }
 
-        // Router: Entscheidet, was angezeigt wird basierend auf dem Link (Hash)
         function handleRouting() {
-            const hash = window.location.hash.substring(1); // Entfernt das "#"
-            
+            const hash = window.location.hash.substring(1); 
             if (hash) {
-                // Einzelansicht
                 gridView.style.display = 'none';
                 mainTitle.style.display = 'none';
                 standaloneView.style.display = 'block';
+                window.scrollTo(0, 0); 
                 renderStandalone(hash);
             } else {
-                // Startseite
-                gridView.style.display = 'grid';
+                gridView.style.display = 'flex';
                 mainTitle.style.display = 'block';
                 standaloneView.style.display = 'none';
                 renderGrid();
             }
         }
 
-        // Button "Zurück zur Übersicht"
-        function goHome() {
-            window.location.hash = ''; // Leert den Hash, Router übernimmt den Rest
-        }
-
-        // Event-Listener, wenn sich der Link (Hash) ändert
+        function goHome() { window.location.hash = ''; }
         window.addEventListener('hashchange', handleRouting);
-
-        // Beim ersten Laden der Seite den Router aufrufen
         handleRouting();
-
     </script>
 </body>
 </html>
