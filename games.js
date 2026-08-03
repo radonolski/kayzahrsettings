@@ -13,7 +13,7 @@ const games = [
             <h3>Video Settings</h3>
             <p>Alles auf Low für maximale FPS. Schatten deaktiviert.</p>
         `
-    }
+    },
     {
         id: "warzone",
         title: "Call of Duty: Warzone",
