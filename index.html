@@ -85,8 +85,13 @@
         const standaloneCard = document.getElementById('standalone-card-container');
         const mainTitle = document.getElementById('main-title');
 
-        function getSteamImage(appId) {
-            return `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`;
+        function getImageUrl(game) {
+            // Wenn ein eigener Link in der games.js steht, nutze diesen:
+            if (game.imageUrl) {
+                return game.imageUrl;
+            }
+            // Ansonsten nutze standardmäßig das Steam-Bild:
+            return `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.steamAppId}/header.jpg`;
         }
 
         function renderGrid() {
@@ -95,7 +100,7 @@
                 const card = document.createElement('div');
                 card.className = 'game-card';
                 card.innerHTML = `
-                    <div class="game-banner" style="background-image: url('${getSteamImage(game.steamAppId)}')"></div>
+                    <div class="game-banner" style="background-image: url('${getImageUrl(game)}')"></div>
                     <div class="game-title">
                         ${game.title}
                         <span class="toggle-icon">▼</span>
@@ -120,7 +125,7 @@
             const game = games.find(g => g.id === gameId);
             if (!game) { goHome(); return; }
             standaloneCard.innerHTML = `
-                <div class="standalone-banner" style="background-image: url('${getSteamImage(game.steamAppId)}')"></div>
+                <div class="standalone-banner" style="background-image: url('${getImageUrl(game)}')"></div>
                 <div class="standalone-content">
                     <h2 style="color: var(--text-main); margin-top: 0; font-size: 1.5rem;">${game.title}</h2>
                     ${game.content}
