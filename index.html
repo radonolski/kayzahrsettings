@@ -61,8 +61,13 @@
         <div class="standalone-card" id="standalone-card-container"></div>
     </div>
 
-    <!-- HIER LADEN WIR DEINE DATENBANK-DATEI -->
-    <script src="games.js?v=1"></script>
+    <script>
+        // Lädt die Datei bei JEDEM Seitenaufruf garantiert neu,
+        // indem die aktuelle Uhrzeit in Millisekunden angehängt wird.
+        var script = document.createElement('script');
+        script.src = 'games.js?t=' + new Date().getTime();
+        document.body.appendChild(script);
+    </script>
 
     <script>
         const gridView = document.getElementById('grid-view');
