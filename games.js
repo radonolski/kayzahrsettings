@@ -13,7 +13,7 @@ const games = [
             <h3>Video Settings</h3>
             <p>Alles auf Low für maximale FPS. Schatten deaktiviert.</p>
         `
-    }, // <-- HIER FEHLTE DAS KOMMA
+    },
     {
         id: "warzone",
         title: "Call of Duty: Warzone",
@@ -21,5 +21,13 @@ const games = [
         content: `
             <h3>Test</h3><p>Test</p>
         `
-    } // Das Komma am Ende hier wurde entfernt, da es das letzte Element in der Liste ist
+    },
+    {
+        id: "battlefield6",
+        title: "Battlefield 6",
+        steamAppId: "2807960",
+        content: `
+            <h1>Battlefield 6 REDSEC Einstellungen:</h1><p><br></p><p><br></p><p><strong>Chris hat zu seinen REDSEC Einstellungen ein YouTube Video hochgeladen:</strong></p><p><br></p><p>https://www.youtube.com/watch?v=1_yDKgUD0LA</p><p><br></p><h1><br></h1><p><br></p>
+        `
+    },
 ];
