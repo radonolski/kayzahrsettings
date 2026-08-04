@@ -62,10 +62,15 @@
     </div>
 
     <script>
-        // Lädt die Datei bei JEDEM Seitenaufruf garantiert neu,
-        // indem die aktuelle Uhrzeit in Millisekunden angehängt wird.
+        // Lädt die Datei bei JEDEM Seitenaufruf garantiert neu
         var script = document.createElement('script');
         script.src = 'games.js?t=' + new Date().getTime();
+        
+        // NEU: Sag dem Browser, er soll warten, bis die Datei geladen ist
+        script.onload = function() {
+            handleRouting(); // Erst JETZT die Spiele aufbauen!
+        };
+        
         document.body.appendChild(script);
     </script>
 
@@ -136,7 +141,7 @@
 
         function goHome() { window.location.hash = ''; }
         window.addEventListener('hashchange', handleRouting);
-        handleRouting();
+        // HIER WURDE handleRouting(); GELÖSCHT
     </script>
 </body>
 </html>
