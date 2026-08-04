@@ -2,9 +2,18 @@ const games = [
     {
         id: "arcraiders",
         title: "ARC Raiders",
-        imageUrl: "https://cdn.mos.cms.futurecdn.net/5eBGd7NtQve7z7LDdVxaFN.jpg",
+        imageUrl: "https://www.allkeyshop.com/blog/wp-content/uploads/featured-arc-raiders-latest-update-flashpoint-riven-tides-2026-roadmap.webp",
         content: `
             <h1>ARC Raiders Einstellungen:</h1><p><br></p><p><strong>Grafik Einstellungen:</strong></p><p>https://www.twitch.tv/kayzahr/clip/KawaiiImportantTaroMingLee-Yje1N4zgSK_PtSxL</p><p><br></p><p><strong>Controller Einstellungen:</strong></p><p>https://www.twitch.tv/kayzahr/clip/SwissShortPorcupineFailFish-rlg91p30OeQUND97</p><p><br></p><p><strong>Sensitivity:</strong></p><p>Chris spielt mit 800 dpi und diesen Settings:</p><p>https://imgur.com/a/cIGbN8g</p><p><br></p><p><strong>Tipps für Anfänger:</strong></p><p>https://www.youtube.com/watch?v=VRp1K7Szfss</p><p><br></p><p><strong>Tipps für Fortgeschrittene:</strong></p><p>https://www.youtube.com/watch?v=BVHoANs9p8Q </p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
+        `
+    },
+    {
+        id: "battlefield6",
+        title: "Battlefield 6",
+        steamAppId: "3028330",
+        imageUrl: "https://imagenes.hobbyconsolas.com/files/image_640_360/uploads/imagenes/2025/08/22/6904a4f22a4b5.jpeg",
+        content: `
+            <h1>Batllefield 6/REDSEC Einstellungen:</h1><p><br></p><p><strong>Chris hat zu Battlefield 6/REDSEC ein YouTube Video hochgeladen, in dem alle</strong></p><p><strong>relevanten Einstellungen gezeigt werden:</strong></p><p><br></p><p>https://www.youtube.com/watch?v=1_yDKgUD0LA&nbsp;</p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
         `
     },
     {
@@ -23,13 +32,5 @@ const games = [
             <h1>Call of Duty: Warzone Einstellungen:</h1><p><br></p><p><strong>Chris hat zu Call of Duty Warzone ein YouTube Video hochgeladen, in dem alle</strong></p><p><strong>relevanten Einstellungen gezeigt werden:</strong></p><p><br></p><p>https://youtu.be/u03TiLVvBmo?si=whUHO1LBxzOpmo1z&nbsp;</p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
         `
     },
-    {
-        id: "battlefield6",
-        title: "Battlefield 6",
-        steamAppId: "3028330",
-        imageUrl: "https://imagenes.hobbyconsolas.com/files/image_640_360/uploads/imagenes/2025/08/22/6904a4f22a4b5.jpeg",
-        content: `
-            <h1>Batllefield 6/REDSEC Einstellungen:</h1><p><br></p><p><strong>Chris hat zu Battlefield 6/REDSEC ein YouTube Video hochgeladen, in dem alle</strong></p><p><strong>relevanten Einstellungen gezeigt werden:</strong></p><p><br></p><p>https://www.youtube.com/watch?v=1_yDKgUD0LA&nbsp;</p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
-        `
-    },
+
 ];
