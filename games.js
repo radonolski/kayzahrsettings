@@ -19,6 +19,7 @@ const games = [
         id: "battlefield6",
         title: "Battlefield 6",
         steamAppId: "3028330",
+        imageUrl: "https://imagenes.hobbyconsolas.com/files/image_640_360/uploads/imagenes/2025/08/22/6904a4f22a4b5.jpeg",
         content: `
             <h1>Batllefield 6/REDSEC Einstellungen:</h1><p><br></p><p><strong>Chris hat zu Battlefield 6/REDSEC ein YouTube Video hochgeladen, in dem alle</strong></p><p><strong>relevanten Einstellungen gezeigt werden:</strong></p><p><br></p><p>https://www.youtube.com/watch?v=1_yDKgUD0LA&nbsp;</p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
         `
