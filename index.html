@@ -43,8 +43,34 @@
             /* Die Karte "schwebt" beim Hovern leicht nach oben */
             transform: translateY(-4px); 
         }
-        .game-banner { width: 100%; height: 180px; background-size: cover; background-position: center; border-bottom: 3px solid var(--primary); }
-        .game-title { padding: 15px 20px; font-size: 1.3rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .game-banner { 
+            width: 100%; 
+            height: 180px; 
+            background-size: cover; 
+            background-position: center; 
+            /* Sorgt für die butterweiche Animation beim Zoomen */
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        }
+
+        /* NEU: Das Bild zoomt leicht rein, wenn man über die Karte fährt */
+        .game-card:hover .game-banner {
+            transform: scale(1.08);
+        }
+
+        .game-title { 
+            padding: 15px 20px; 
+            font-size: 1.3rem; 
+            font-weight: bold; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            /* Der lila Strich ist jetzt hier, damit er beim Zoom scharf bleibt */
+            border-top: 3px solid var(--primary); 
+            /* Verhindert, dass das gezoomte Bild den Titel überlappt oder durchscheint */
+            position: relative;
+            z-index: 2; 
+            background-color: var(--card-bg);
+        }
         
         .toggle-icon { font-size: 0.9rem; color: var(--primary); transition: transform 0.3s ease; }
         .game-card.expanded .toggle-icon { transform: rotate(180deg); }
