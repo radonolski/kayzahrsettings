@@ -135,12 +135,22 @@
         const standaloneCard = document.getElementById('standalone-card-container');
         const mainTitle = document.getElementById('main-title');
 
+        // NEU: Diese Funktion sucht im Text nach "https..." und macht es klickbar
+        function autoLink(text) {
+            // Sucht nach existierenden HTML-Tags ODER nach reinen Links
+            const regex = /(<[^>]+>)|(\bhttps?:\/\/[^ \n\r\t<]+)/g;
+            return text.replace(regex, function(match, tag, url) {
+                if (tag) return tag; // Normale HTML-Befehle in Ruhe lassen
+                // Den gefundenen Text in einen echten, klickbaren Link verwandeln:
+                if (url) return `<a href="${url}" target="_blank">${url}</a>`; 
+                return match;
+            });
+        }
+
         function getImageUrl(game) {
-            // Wenn ein eigener Link in der games.js steht, nutze diesen:
             if (game.imageUrl) {
                 return game.imageUrl;
             }
-            // Ansonsten nutze standardmäßig das Steam-Bild:
             return `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${game.steamAppId}/header.jpg`;
         }
 
@@ -155,11 +165,11 @@
                         ${game.title}
                         <span class="toggle-icon">▼</span>
                     </div>
-                    <!-- HIER NEU: onclick blockiert das Schließen beim Klicken im Text -->
                     <div class="game-content-wrapper" onclick="event.stopPropagation()">
                         <div class="game-content-inner">
                             <div class="game-content-padding">
-                                ${game.content}
+                                <!-- HIER WIRD DER AUTO-LINKER ANGEWANDT -->
+                                ${autoLink(game.content)}
                                 <div style="margin-top: 20px; text-align: right; border-top: 1px solid #333; padding-top: 15px;">
                                     <a href="#${game.id}">↗ Im Vollbild öffnen</a>
                                 </div>
@@ -179,7 +189,8 @@
                 <div class="standalone-banner" style="background-image: url('${getImageUrl(game)}')"></div>
                 <div class="standalone-content">
                     <h2 style="color: var(--text-main); margin-top: 0; font-size: 1.5rem;">${game.title}</h2>
-                    ${game.content}
+                    <!-- HIER WIRD DER AUTO-LINKER ANGEWANDT -->
+                    ${autoLink(game.content)}
                 </div>
             `;
         }
@@ -202,7 +213,6 @@
 
         function goHome() { window.location.hash = ''; }
         window.addEventListener('hashchange', handleRouting);
-        // HIER WURDE handleRouting(); GELÖSCHT
     </script>
 </body>
 </html>
