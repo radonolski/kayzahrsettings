@@ -22,8 +22,27 @@
         h1 { text-align: center; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 1.8rem; }
         
         #grid-view { display: flex; flex-direction: column; gap: 20px; max-width: 650px; margin: 0 auto; }
-        .game-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent; cursor: pointer; width: 100%; }
-        .game-card:hover { border-color: var(--primary); background-color: var(--card-hover); }
+        .game-card { 
+            background-color: var(--card-bg); 
+            border-radius: 12px; /* Minimal runder für einen modernen Look */
+            overflow: hidden; 
+            /* Subtiler, halbtransparenter Rand statt unsichtbarer Border */
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5); 
+            /* Hochwertige, weiche Animations-Kurve */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            cursor: pointer; 
+            width: 100%; 
+        }
+
+        .game-card:hover { 
+            background-color: var(--card-hover); 
+            /* Das ist der lila Glow-Effekt nach außen */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 20px rgba(145, 70, 255, 0.4);
+            border-color: rgba(145, 70, 255, 0.5);
+            /* Die Karte "schwebt" beim Hovern leicht nach oben */
+            transform: translateY(-4px); 
+        }
         .game-banner { width: 100%; height: 180px; background-size: cover; background-position: center; border-bottom: 3px solid var(--primary); }
         .game-title { padding: 15px 20px; font-size: 1.3rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
         
@@ -36,9 +55,40 @@
         .game-content-padding { padding: 0 20px 20px 20px; color: var(--text-muted); font-size: 0.95rem; }
 
         #standalone-view { display: none; max-width: 650px; margin: 0 auto; }
-        .home-btn { background-color: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 20px; display: inline-flex; align-items: center; text-decoration: none; transition: background-color 0.2s; width: 100%; justify-content: center; }
-        .home-btn:hover { background-color: var(--primary-hover); }
-        .standalone-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; border-top: 5px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
+        .home-btn { 
+            background-color: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            display: inline-flex; 
+            align-items: center; 
+            text-decoration: none; 
+            width: 100%; 
+            justify-content: center; 
+            /* Leichter Basis-Glow */
+            box-shadow: 0 4px 15px rgba(145, 70, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        }
+
+        .home-btn:hover { 
+            background-color: var(--primary-hover); 
+            /* Hebt sich leicht und verstärkt den Glow */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(145, 70, 255, 0.6);
+        }
+        .standalone-card { 
+            background-color: var(--card-bg); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            /* Gleicher moderner Rand und Glow wie bei den kleinen Karten */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 4px solid var(--primary); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 30px rgba(145, 70, 255, 0.15); 
+        }
         .standalone-banner { width: 100%; height: 200px; background-size: cover; background-position: center; }
         .standalone-content { padding: 20px; color: var(--text-muted); }
 
