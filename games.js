@@ -1,5 +1,13 @@
 const games = [
     {
+        id: "arcraiders",
+        title: "ARC Raiders",
+        imageUrl: "https://cdn.mos.cms.futurecdn.net/5eBGd7NtQve7z7LDdVxaFN.jpg",
+        content: `
+            <h1>ARC Raiders Einstellungen:</h1><p><br></p><p><strong>Grafik Einstellungen:</strong></p><p>https://www.twitch.tv/kayzahr/clip/KawaiiImportantTaroMingLee-Yje1N4zgSK_PtSxL</p><p><br></p><p><strong>Controller Einstellungen:</strong></p><p>https://www.twitch.tv/kayzahr/clip/SwissShortPorcupineFailFish-rlg91p30OeQUND97</p><p><br></p><p><strong>Sensitivity:</strong></p><p>Chris spielt mit 800 dpi und diesen Settings:</p><p>https://imgur.com/a/cIGbN8g</p><p><br></p><p><strong>Tipps für Anfänger:</strong></p><p>https://www.youtube.com/watch?v=VRp1K7Szfss</p><p><br></p><p><strong>Tipps für Fortgeschrittene:</strong></p><p>https://www.youtube.com/watch?v=BVHoANs9p8Q </p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
+        `
+    },
+    {
         id: "blackops2",
         title: "Call of Duty: Black Ops II",
         steamAppId: "202970",
