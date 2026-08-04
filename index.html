@@ -155,12 +155,13 @@
                         ${game.title}
                         <span class="toggle-icon">▼</span>
                     </div>
-                    <div class="game-content-wrapper">
+                    <!-- HIER NEU: onclick blockiert das Schließen beim Klicken im Text -->
+                    <div class="game-content-wrapper" onclick="event.stopPropagation()">
                         <div class="game-content-inner">
                             <div class="game-content-padding">
                                 ${game.content}
                                 <div style="margin-top: 20px; text-align: right; border-top: 1px solid #333; padding-top: 15px;">
-                                    <a href="#${game.id}" onclick="event.stopPropagation()">↗ Im Vollbild öffnen</a>
+                                    <a href="#${game.id}">↗ Im Vollbild öffnen</a>
                                 </div>
                             </div>
                         </div>
