@@ -27,7 +27,7 @@ const games = [
     {
         id: "wardogs",
         title: "WARDOGS Settings (ausm Stream)",
-        steamAppId: "1867240",
+        imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1867240/24c0b6c0621560e922fbed18545921e7eaa9036e/capsule_616x353.jpg?t=1789059636",        
         content: `
             <h1 class="ql-align-center">WARDOGS Einstellungen:</h1><p><br></p><p><strong>Chris hat zu WARDOGS bis jetzt nur einen kurzen Clip im Stream veröffentlicht:</strong></p><p><br></p><p>https://www.twitch.tv/kayzahr/clip/EagerFairEggplantBIRB-Bi95gmCAc-COheAP </p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
         `
