@@ -25,6 +25,14 @@ const games = [
         `
     },
     {
+        id: "wardogs",
+        title: "WARDOGS Settings (ausm Stream)",
+        steamAppId: "1867240",
+        content: `
+            <h1 class="ql-align-center">WARDOGS Einstellungen:</h1><p><br></p><p><strong>Chris hat zu WARDOGS bis jetzt nur einen kurzen Clip im Stream veröffentlicht:</strong></p><p><br></p><p>https://www.twitch.tv/kayzahr/clip/EagerFairEggplantBIRB-Bi95gmCAc-COheAP </p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
+        `
+    },
+    {
         id: "warzone",
         title: "Call of Duty: Warzone",
         steamAppId: "1962663",
