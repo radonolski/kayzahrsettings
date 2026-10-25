@@ -25,6 +25,14 @@ const games = [
         `
     },
     {
+        id: "mw4",
+        title: "Call of Duty: Modern Warfare 4 (DMZ)",
+        imageUrl: "https://gaming-cdn.com/images/news/articles/19779/cover/call-of-duty-modern-warfare-4-erscheint-am-23-oktober-2026-cover6a185f7a8ae4a.jpg",
+        content: `
+            <h1 class="ql-align-center">MW4 DMZ Einstellungen:</h1><p><br></p><p><strong>Einstellungen:</strong></p><p>https://www.twitch.tv/kayzahr/clip/PlumpSuperPigeonOMGScoots-QY614WNx8EMP8KZx </p><p><br></p><p><strong>Einsteiger Tipps:</strong></p><p>https://www.youtube.com/watch?v=I8Nb5tYvRow</p><p><br></p><p><br></p><p><strong>Wenn sich hierdurch etwas bei euch verbessert haben sollte, lasst gerne etwas Liebe in KayzahRs Chat da :]</strong></p>
+        `
+    },
+    {
         id: "wardogs",
         title: "WARDOGS Settings (ausm Stream)",
         imageUrl: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1867240/24c0b6c0621560e922fbed18545921e7eaa9036e/capsule_616x353.jpg?t=1789059636",        
